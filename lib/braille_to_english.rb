@@ -55,6 +55,6 @@ class BrailleToEnglish
       final_message_array << "#{row_array.join}\n"
     end
   
-      inal_message_array.join
+      final_message_array.join
   end
 end

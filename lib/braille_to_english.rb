@@ -37,52 +37,57 @@ class BrailleToEnglish
   }
   
   braille_message = []
-  message_slots = []
+
+  braille_message << braille_alhpabet[@message.split]
+
+  braille_message.join
   
-  @message.split.each do |row|
-    require 'pry'; binding.pry
-    match = braille_alhpabet.keys.find {|key| key == row}
-    if match == nil
-      braille_message << row
-    else
-      braille_message << braille_alhpabet[match]
-      require 'pry'; binding.pry
-    end
-  end
+  # @message.split.each do |row_message|
+  #   braille_alhpabet.keys.find_all do |row_alphabet|
+  #     row_alphabet == row_message
+  #   end
+  #   match = braille_alhpabet.keys.map { |key| key == row[0] }
+  #   if match == nil
+  #     braille_message << row
+  #   else
+  #     braille_message << braille_alhpabet[match]
+  #   end
+  # end
   
-  braille_format = Hash.new{ |k, v| k[v] = [] }
+  # braille_format = Hash.new{ |k, v| k[v] = [] }
   
-  braille_message.each do |braille_letter|
-    braille_format[1] << braille_letter[0]
-    braille_format[2] << braille_letter[1]
-    braille_format[3] << braille_letter[2]
-  end
+  # braille_message.each do |braille_letter|
+  #   braille_format[1] << braille_letter[0]
+  #   braille_format[2] << braille_letter[1]
+  #   braille_format[3] << braille_letter[2]
+  # end
+
+
   
-  braille_format_actual = Hash.new{ |k, v| k[v] = [] }
-  storage = []
+  # braille_format_actual = Hash.new{ |k, v| k[v] = [] }
+  # storage = []
   
-  braille_format.each do |line, row_array|
-    i = line
-    if row_array.count > 40
-      storage = braille_format[line].pop(row_array.count - 40)
-      braille_format_actual[i] = row_array
-      while storage.count > 0
-        i += 3
-        braille_format_actual[i] = storage.shift(40)
-      end
-    else
-      braille_format_actual[i] = row_array
-    end
-  end
+  # braille_format.each do |line, row_array|
+  #   i = line
+  #   if row_array.count > 40
+  #     storage = braille_format[line].pop(row_array.count - 40)
+  #     braille_format_actual[i] = row_array
+  #     while storage.count > 0
+  #       i += 3
+  #       braille_format_actual[i] = storage.shift(40)
+  #     end
+  #   else
+  #     braille_format_actual[i] = row_array
+  #   end
+  # end
   
-  braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
+  # braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
+  #   final_message_array = []
   
-  final_message_array = []
+  #   braille_format_actual.each do |line, row_array|
+  #     final_message_array << "#{row_array.join}\n"
+  #   end
   
-  braille_format_actual.each do |line, row_array|
-    final_message_array << "#{row_array.join}\n"
-  end
-  
-    final_message_array.join
+  #   final_message_array.join
   end
 end

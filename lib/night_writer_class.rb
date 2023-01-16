@@ -1,3 +1,5 @@
+require_relative './english_to_braille'
+
 class NightWriterClass
   
     attr_reader :handle,
@@ -21,7 +23,8 @@ class NightWriterClass
     end
     
     def change_text
-      @outgoing_text = @incoming_text.upcase
+      translated_text = EnglishToBraille.new(@incoming_text)
+      @outgoing_text = translated_text.translate
     end
     
     def make_file(file_name2)

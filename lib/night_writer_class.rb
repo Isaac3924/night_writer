@@ -7,15 +7,11 @@ class NightWriterClass
                 :writer
     
     def initialize(file_name1, file_name2)
-      if File.exists?(file_name1)
-        @handle = File.open(file_name1, "r")
-        @incoming_text = @handle.read
-        @old_file_characters = @incoming_text.length
-        change_text
-        make_file(file_name2)
-      else
-        puts "The first file is not in the directory. Please input a file that is."
-      end
+      @handle = File.open(file_name1, "r")
+      @incoming_text = @handle.read
+      @old_file_characters = @incoming_text.length
+      change_text
+      make_file(file_name2)
     end
     
     def self.from_terminal(file_name1, file_name2)
@@ -24,14 +20,6 @@ class NightWriterClass
       else
         puts "The first file is not in the directory. Please input a file that is."
       end
-    end
-    
-    def read
-      @incoming_text = @handle.read
-    end
-    
-    def print_read
-      puts @incoming_text
     end
     
     def change_text

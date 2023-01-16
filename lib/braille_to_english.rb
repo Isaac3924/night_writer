@@ -37,6 +37,16 @@ class BrailleToEnglish
   }
   
   braille_message = []
+  message_order = Hash.new{ |k, v| k[v] = [] }
+
+  @message.split.each do |row_message|
+    i = 0
+    row_message.scan(/../).each do |message_element|
+      message_order[i] << message_element
+      i += 1
+    end
+    require 'pry'; binding.pry
+  end
 
   braille_message << braille_alhpabet[@message.split]
 

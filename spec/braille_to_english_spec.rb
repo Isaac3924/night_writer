@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe BrailleToEnglish do
-  let(:translator) { BrailleToEnglish.new('0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...') }
+  let(:translator) { BrailleToEnglish.new("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...") }
   
   describe 'Iteration 3' do
     describe '#initialize' do

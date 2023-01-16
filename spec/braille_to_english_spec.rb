@@ -22,7 +22,7 @@ RSpec.describe BrailleToEnglish do
     end
 
     describe '#translate' do
-      xit 'can change a single braille letter' do
+      it 'can change a single braille letter' do
         expect(translator_single.translate).to eq("z")
       end
 

@@ -36,7 +36,7 @@ class BrailleToEnglish
                          ["..", "..", ".."] => " " 
   }
   
-  braille_message = []
+  english_message = []
   message_order = Hash.new{ |k, v| k[v] = [] }
 
   @message.split.each do |row_message|
@@ -45,12 +45,13 @@ class BrailleToEnglish
       message_order[i] << message_element
       i += 1
     end
-    require 'pry'; binding.pry
   end
 
-  braille_message << braille_alhpabet[@message.split]
+  message_order.each do |key, letter_array|
+    english_message << braille_alhpabet[letter_array]
+  end
 
-  braille_message.join
+  english_message.join
   
   # @message.split.each do |row_message|
   #   braille_alhpabet.keys.find_all do |row_alphabet|

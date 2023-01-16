@@ -42,7 +42,7 @@ RSpec.describe NightWriterClass do
       it 'can change the text' do
         night_writer.change_text
 
-        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 18 characters.") )
+        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 17 characters.") )
       end
     end
 

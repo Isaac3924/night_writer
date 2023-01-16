@@ -1,7 +1,7 @@
 class EnglishToBraille
-  attr_reader :string
+  attr_reader :message
 
-  def initialize(string)
-    @string = string
+  def initialize(message)
+    @message = message
   end
 end

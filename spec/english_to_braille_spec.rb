@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe EnglishToBraille do
-  let(:translator) { EnglishToBraille.new('h') }
+  let(:translator) { EnglishToBraille.new('This is a message.') }
   
   describe 'Iteration 2' do
     describe '#initialize' do
@@ -10,8 +10,8 @@ RSpec.describe EnglishToBraille do
       end
 
       it 'has character attribute' do
-        expect(night_writer.handle).to be_a(String)
-        expect(night_writer.incoming_text).to eq("This is a message.")
+        expect(translator.message).to be_a(String)
+        expect(translator.message).to eq("This is a message.")
       end
     end
 

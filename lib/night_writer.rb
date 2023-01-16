@@ -1,22 +1,28 @@
-handle = File.open(ARGV[0], "r")
+night_writer = NightWriter.from_terminal(ARGV[0], ARGV[1])
 
-incoming_text = handle.read
+if File.exists?(ARGV[0])
+  handle = File.open(ARGV[0], "r")
 
-handle.close
+  incoming_text = handle.read
 
-changed_text = incoming_text.upcase
+  handle.close
 
-writer = File.open(ARGV[1], "w")
+  changed_text = incoming_text.upcase
 
-writer.write(changed_text)
+  writer = File.open(ARGV[1], "w")
 
-writer.close
+  writer.write(changed_text)
 
-old_file_name = 'message.txt'
-new_file_name = 'changed_message.txt'
-old_file_characters = incoming_text.length
+  writer.close
 
-puts "Created '#{new_file_name}' from '#{old_file_name}' which had #{old_file_characters} characters."
+  old_file_name = 'message.txt'
+  new_file_name = 'changed_message.txt'
+  old_file_characters = incoming_text.length
+
+  puts "Created '#{File.basename(writer)}' from '#{File.basename(handle)}' which had #{old_file_characters} characters."
+else
+  puts "The first file is not in the directory. Please input a file that is."
+end
 # class NightWriter
 #   attr_reader :handle,
 #               :incoming_text,

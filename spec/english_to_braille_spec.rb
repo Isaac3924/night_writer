@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe EnglishToBraille do
-  let(:translator) { EnglishToBraille.new() }
+  let(:translator) { EnglishToBraille.new('h') }
   
   describe 'Iteration 2' do
     describe '#initialize' do

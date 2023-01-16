@@ -36,6 +36,7 @@ class EnglishToBraille
                         }
 
     braille_message = []
+    message_slots = []
 
     @message.chars.each do |letter|
       match = braille_alhpabet.keys.find {|key| key == letter}
@@ -46,16 +47,46 @@ class EnglishToBraille
       end
     end
 
-    braille_format = {line1: [],
-                      line2: [],
-                      line3: []}
+    # i = 0
+    # (@message.length/40).ceil.times do
+    #   hash.new{ |line, array| line[array] = [] } 
+    #   i += 3
+    # end
+
+    braille_format = Hash.new{ |k, v| k[v] = [] }
 
     braille_message.each do |braille_letter|
-      braille_format[:line1] << braille_letter[0]
-      braille_format[:line2] << braille_letter[1]
-      braille_format[:line3] << braille_letter[2]
+      braille_format[1] << braille_letter[0]
+      braille_format[2] << braille_letter[1]
+      braille_format[3] << braille_letter[2]
     end
 
-    braille_formatted_message = "#{braille_format[:line1].join}\n#{braille_format[:line2].join}\n#{braille_format[:line3].join}"
+    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
+    storage = []
+
+    braille_format.each do |line, row_array|
+      i = line
+      if row_array.count > 40
+        storage = braille_format[line].pop(row_array.count - 40)
+        braille_format_actual[i] = row_array
+        while storage.count > 0
+          i += 3
+          braille_format_actual[i] = storage.shift(40)
+        end
+      end
+    end
+
+    braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
+
+    # braille_formatted_message = "#{braille_format[:line1].join}\n#{braille_format[:line2].join}\n#{braille_format[:line3].join}"
+
+    final_message_array = []
+
+    braille_format_actual.each do |line, row_array|
+      # require 'pry'; binding.pry
+      final_message_array << "#{row_array.join}\n"
+    end
+
+    final_message_array.join
   end
 end

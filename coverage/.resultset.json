@@ -1,0 +1,46 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/isaacalter/Desktop/turing_work/1mod/projects/night_writer/lib/night_writer_class.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          null,
+          null,
+          1,
+          4,
+          3,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          3,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1673849501
+  }
+}

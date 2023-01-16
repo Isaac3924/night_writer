@@ -12,11 +12,11 @@ writer.write(changed_text)
 
 writer.close
 
-old_file_name = 'XXX'
-new_file_name = 'XXXX'
+old_file_name = 'message.txt'
+new_file_name = 'changed_message.txt'
 old_file_characters = incoming_text.length
 
-puts "Created '#{new_file_name}' from '#{old_file_name}' which had #{} characters."
+puts "Created '#{new_file_name}' from '#{old_file_name}' which had #{old_file_characters} characters."
 # class NightWriter
 #   attr_reader :handle,
 #               :incoming_text,

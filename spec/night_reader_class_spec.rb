@@ -23,8 +23,8 @@ RSpec.describe NightReaderClass do
       it 'has attributes' do
         expect(night_reader.handle).to be_a(File)
         expect(night_reader.incoming_text).to be_a(String)
-        expect(night_reader.incoming_text).to eq("0.0.0.0.0....00.0.0.00/n")
-        expect(night_reader.new_file_characters).to eq(11)
+        expect(night_reader.incoming_text).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+        expect(night_reader.new_file_characters).to eq(0)
         expect(night_reader.outgoing_text).to be_a(String)
         expect(night_reader.outgoing_text).to eq("")
       end

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/isaacalter/Desktop/turing_work/1mod/projects/night_writer/lib/night_writer.rb": {
+      "/Users/isaacalter/Desktop/turing_work/1mod/projects/night_writer/lib/night_writer_class.rb": {
         "lines": [
           1,
           null,
@@ -12,18 +12,12 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          1,
-          0,
-          0,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           null,
           0,
           null,
@@ -31,6 +25,10 @@
           null,
           1,
           0,
+          0,
+          null,
+          0,
+          null,
           null,
           null,
           1,
@@ -42,18 +40,19 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          0,
+          2,
           null,
           null,
+          1,
+          2,
+          2,
+          null,
+          2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1673845584
+    "timestamp": 1673847446
   }
 }

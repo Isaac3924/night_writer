@@ -1,4 +1,4 @@
-class NightWriter
+class NightWriterClass
   
     attr_reader :handle,
                 :incoming_text,
@@ -7,18 +7,20 @@ class NightWriter
                 :writer
     
     def initialize(file_name1, file_name2)
-      @handle = File.open(file_name1, "r")
-      @incoming_text = @handle.read
-      @old_file_characters = @incoming_text.length
-      change_text
-    #   require 'pry'; binding.pry
-      make_file(file_name2)
+      if File.exists?(file_name1)
+        @handle = File.open(file_name1, "r")
+        @incoming_text = @handle.read
+        @old_file_characters = @incoming_text.length
+        change_text
+        make_file(file_name2)
+      else
+        puts "The first file is not in the directory. Please input a file that is."
+      end
     end
     
     def self.from_terminal(file_name1, file_name2)
-    #   require 'pry'; binding.pry
       if File.exists?(file_name1)
-        NightWriter.new(file_name1, file_name2)
+        NightWriterClass.new(file_name1, file_name2)
       else
         puts "The first file is not in the directory. Please input a file that is."
       end
@@ -37,7 +39,6 @@ class NightWriter
     end
     
     def make_file(file_name2)
-    #   require 'pry'; binding.pry
       @writer = File.open(file_name2, "w")
       @writer.write(@outgoing_text)
   

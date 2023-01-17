@@ -23,8 +23,8 @@ RSpec.describe NightWriterClass do
       it 'has attributes' do
         expect(night_writer.handle).to be_a(File)
         expect(night_writer.incoming_text).to be_a(String)
-        expect(night_writer.incoming_text).to eq("This is a message.")
-        expect(night_writer.old_file_characters).to eq(18)
+        expect(night_writer.incoming_text).to eq("hello world")
+        expect(night_writer.old_file_characters).to eq(11)
         expect(night_writer.outgoing_text).to be_a(String)
         expect(night_writer.outgoing_text).to eq("")
       end
@@ -34,7 +34,7 @@ RSpec.describe NightWriterClass do
       it 'can change the text' do
         night_writer.change_text
 
-        expect(night_writer.outgoing_text).to eq("THIS IS A MESSAGE.")
+        expect(night_writer.outgoing_text).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe NightWriterClass do
       it 'can change the text' do
         night_writer.change_text
 
-        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 18 characters.") )
+        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 17 characters.") )
       end
     end
 

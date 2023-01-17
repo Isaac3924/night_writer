@@ -24,25 +24,44 @@ RSpec.describe NightWriterClass do
         expect(night_writer.handle).to be_a(File)
         expect(night_writer.incoming_text).to be_a(String)
         expect(night_writer.incoming_text).to eq("hello world")
-        expect(night_writer.old_file_characters).to eq(11)
+        expect(night_writer.file_characters).to eq(0)
         expect(night_writer.outgoing_text).to be_a(String)
         expect(night_writer.outgoing_text).to eq("")
       end
     end
 
-    describe '#change_text' do
+    describe '#change_text_writer' do
       it 'can change the text' do
-        night_writer.change_text
+        night_writer.change_text_writer
 
         expect(night_writer.outgoing_text).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
       end
     end
 
     describe '#make_file' do
-      it 'can change the text' do
-        night_writer.change_text
+      it 'can create a file' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
 
-        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 17 characters.") )
+        expect(File.exists?("braille.txt")).to eq(true)
+        expect(night_writer.writer).to be_a(File)
+      end
+
+      it 'has a file with the correct contents' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
+        handle = File.open("braille.txt", "r")
+
+        expect(handle.read).to be_a(String)
+      end
+    end
+
+    describe '#file_statement' do
+      it 'can show the stats of the files via a string' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
+
+        expect(night_writer.file_statement).to eq ("Created 'braille.txt' from 'message.txt' which had 11 characters.")
       end
     end
 

@@ -24,25 +24,44 @@ RSpec.describe NightWriterClass do
         expect(night_writer.handle).to be_a(File)
         expect(night_writer.incoming_text).to be_a(String)
         expect(night_writer.incoming_text).to eq("hello world")
-        expect(night_writer.old_file_characters).to eq(11)
+        expect(night_writer.file_characters).to eq(0)
         expect(night_writer.outgoing_text).to be_a(String)
         expect(night_writer.outgoing_text).to eq("")
       end
     end
 
-    describe '#change_text' do
+    describe '#change_text_writer' do
       it 'can change the text' do
-        night_writer.change_text
+        night_writer.change_text_writer
 
         expect(night_writer.outgoing_text).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
       end
     end
 
     describe '#make_file' do
-      it 'can change the text' do
-        night_writer.change_text
+      it 'can create a file' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
 
-        expect(night_writer.make_file("changed.txt")).to eq( print("Created 'changed.txt' from 'message.txt' which had 17 characters.") )
+        expect(File.exists?("braille.txt")).to eq(true)
+        expect(night_writer.writer).to be_a(File)
+      end
+
+      it 'has a file with the correct contents' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
+        handle = File.open("braille.txt", "r")
+
+        expect(handle.read).to be_a(String)
+      end
+    end
+
+    describe '#file_statement' do
+      it 'can show the stats of the files via a string' do
+        night_writer.change_text_writer
+        night_writer.make_file("braille.txt")
+
+        expect(night_writer.file_statement).to eq ("Created 'braille.txt' from 'message.txt' which had 11 characters.")
       end
     end
 
@@ -90,6 +109,9 @@ end
 RSpec.describe NightReaderClass do
   let(:night_reader) { 
     file_name1 = 'braille.txt'
+    new_file = File.open(file_name1, "w")
+    new_file.puts("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
+    new_file.close
 
     NightReaderClass.from_terminal(file_name1) 
   }
@@ -111,25 +133,44 @@ RSpec.describe NightReaderClass do
         expect(night_reader.handle).to be_a(File)
         expect(night_reader.incoming_text).to be_a(String)
         expect(night_reader.incoming_text).to eq("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n")
-        expect(night_reader.new_file_characters).to eq(0)
+        expect(night_reader.file_characters).to eq(0)
         expect(night_reader.outgoing_text).to be_a(String)
         expect(night_reader.outgoing_text).to eq("")
       end
     end
 
-    describe '#change_text' do
+    describe '#change_text_reader' do
       it 'can change the text' do
-        night_reader.change_text
+        night_reader.change_text_reader
 
         expect(night_reader.outgoing_text).to eq("hello world")
       end
     end
 
     describe '#make_file' do
-      it 'can change the text' do
-        night_reader.change_text
+      it 'can create a file' do
+        night_reader.change_text_reader
+        night_reader.make_file("original_message.txt")
 
-        expect(night_reader.make_file("original_message.txt")).to eq( print("Created 'original_message.txt' containing 11 characters, from 'braille.txt'.") )
+        expect(File.exists?("original_message.txt")).to eq(true)
+        expect(night_reader.writer).to be_a(File)
+      end
+
+      it 'has a file with the correct contents' do
+        night_reader.change_text_reader
+        night_reader.make_file("original_message.txt")
+        handle = File.open("original_message.txt", "r")
+
+        expect(handle.read).to be_a(String)
+      end
+    end
+
+    describe '#file_statement' do
+      it 'can show the stats of the files via a string' do
+        night_reader.change_text_reader
+        night_reader.make_file("original_message.txt")
+
+        expect(night_reader.file_statement).to eq ("Created 'original_message.txt' containing 11 characters, from 'braille.txt'.")
       end
     end
 

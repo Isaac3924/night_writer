@@ -18,6 +18,30 @@ RSpec.describe EnglishToBraille do
 
         expect(nil_check.message).to be_a(String)
         expect(nil_check.message).to eq("!")
+
+        expect(translator.braille_alhpabet).to be_a(Hash)
+        expect(nil_check.braille_alhpabet).to be_a(Hash)
+      end
+    end
+
+    describe '#match' do
+      it 'can match English letters in message to an array
+          representing itself in Braille' do
+
+          expect(translator.match).to be_a(Array)
+          expect(translator.match[0]).to eq(["0.", "00", ".."])
+          expect(translator.match[11]).to eq(["..", "..", ".."])
+      end
+    end
+
+    describe '#format' do
+      it 'can take each element of an array of arrays
+          and place them into a hash that seperates them 
+          into three keys' do
+
+          expect(translator.format(translator.match)).to be_a(Hash)
+          expect(translator.format(translator.match)[1]).to be_a(Array)
+          expect(translator.format(translator.match)[3]).to be_a(Array)
       end
     end
 

@@ -1,12 +1,14 @@
+require_relative "./analytics"
+
 class EnglishToBraille
-  attr_reader :message
+  include Analytics
+
+  attr_reader :message,
+              :braille_alhpabet
 
   def initialize(message)
     @message = message
-  end
-
-  def translate
-    braille_alhpabet = { "a" => ["0.", "..", ".."],
+    @braille_alhpabet = { "a" => ["0.", "..", ".."],
                          "b" => ["0.", "0.", ".."],
                          "c" => ["00", "..", ".."],
                          "d" => ["00", ".0", ".."],
@@ -35,18 +37,24 @@ class EnglishToBraille
                          " " => ["..", "..", ".."],
                          "N/A" => ["XX", "XX", "XX"]
                         }
+  end
 
+  def match
     braille_message = []
 
     @message.chars.each do |letter|
-      match = braille_alhpabet.keys.find {|key| key == letter}
+      match = @braille_alhpabet.keys.find {|key| key == letter}
       if match == nil
-        braille_message << braille_alhpabet["N/A"]
+        braille_message << @braille_alhpabet["N/A"]
       else
-        braille_message << braille_alhpabet[match]
+        braille_message << @braille_alhpabet[match]
       end
     end
 
+    braille_message
+  end
+
+  def format(braille_message)
     braille_format = Hash.new{ |k, v| k[v] = [] }
 
     braille_message.each do |braille_letter|
@@ -55,26 +63,19 @@ class EnglishToBraille
       braille_format[3] << braille_letter[2]
     end
 
-    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
-    storage = []
+    braille_format
+  end
+    
+  def translate
+    final_message_array = []
 
-    braille_format.each do |line, row_array|
-      i = line
-      if row_array.count > 40
-        storage = braille_format[line].pop(row_array.count - 40)
-        braille_format_actual[i] = row_array
-        while storage.count > 0
-          i += 3
-          braille_format_actual[i] = storage.shift(40)
-        end
-      else
-        braille_format_actual[i] = row_array
-      end
-    end
+    braille_message = match
+
+    braille_format = format(braille_message)
+
+    braille_format_actual = adv_format(braille_format, 40, 3)
 
     braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
-
-    final_message_array = []
 
     braille_format_actual.each do |line, row_array|
       final_message_array << "#{row_array.join}\n"

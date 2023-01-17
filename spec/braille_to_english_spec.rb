@@ -24,6 +24,17 @@ RSpec.describe BrailleToEnglish do
 
         expect(translator_long.braille_message).to be_a(String)
         expect(translator_long.braille_message).to eq("0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.\n00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0.\n....0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.\n0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.\n.0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0\n0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.\n0.0.00..0.0.0.0.0....00.0.0.00..\n000..0..00.00.0..0..00.0000..0..\n0.0.........0.0.0....00.0.0.....\n")
+
+        expect(translator.braille_alhpabet).to be_a(Hash)
+        expect(translator_single.braille_alhpabet).to be_a(Hash)
+        expect(translator_long.braille_alhpabet).to be_a(Hash)
+      end
+    end
+
+    describe '#split_braille' do
+      it 'can take a braille message and seperate it into a Hash' do
+        expect(translator.split_braille[0]).to eq(["0.", "00", ".."])
+        expect(translator.split_braille[7]).to eq(["0.", ".0", "0."])
       end
     end
 

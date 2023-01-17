@@ -1,8 +1,8 @@
 class EnglishToBraille
-  attr_reader :braille_message
+  attr_reader :message
 
   def initialize(message)
-    @braille_message = message
+    @message = message
   end
 
   def translate
@@ -35,9 +35,9 @@ class EnglishToBraille
                          " " => ["..", "..", ".."]
                         }
 
-    english_message = []
+    braille_message = []
 
-    @braille_message.chars.each do |letter|
+    @message.chars.each do |letter|
       match = braille_alhpabet.keys.find {|key| key == letter}
       if match == nil
         braille_message << letter

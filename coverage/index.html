@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-01-16T15:39:52-07:00">2023-01-16T15:39:52-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-01-17T02:00:39-07:00">2023-01-17T02:00:39-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  36.67%
+  46.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.32
+         13.55
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>90</b> relevant lines,
-    <span class="green"><b>33</b> lines covered</span> and
-    <span class="red"><b>57</b> lines missed. </span>
+    <b>100</b> relevant lines,
+    <span class="green"><b>46</b> lines covered</span> and
+    <span class="red"><b>54</b> lines missed. </span>
     (<span class="red">
-  36.67%
+  46.0%
 </span>
 )
   </div>
@@ -72,12 +72,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#4efc79cee494cf0f87ea4a0722e9fe00bc4805ef" class="src_link" title="lib/braille_to_english.rb">lib/braille_to_english.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">78.95 %</td>
-            <td class="cell--number">62</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">15</td>
-            <td class="cell--number">4</td>
-            <td class="cell--number">24.26</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">75</td>
+            <td class="cell--number">28</td>
+            <td class="cell--number">28</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">47.75</td>
             
           </tr>
         
@@ -94,12 +94,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#84333f82465ac6d5addeced36ee7ac32fc8a235c" class="src_link" title="lib/night_reader_class.rb">lib/night_reader_class.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">36.84 %</td>
-            <td class="cell--number">36</td>
-            <td class="cell--number">19</td>
+            <td class="red strong cell--number t-file__coverage">35.00 %</td>
+            <td class="cell--number">37</td>
+            <td class="cell--number">20</td>
             <td class="cell--number">7</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">0.37</td>
+            <td class="cell--number">13</td>
+            <td class="cell--number">0.35</td>
             
           </tr>
         
@@ -135,8 +135,8 @@
   <div class="header">
     <h3>lib/braille_to_english.rb</h3>
     <h4>
-      <span class="red">
-  78.95%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -145,9 +145,9 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
-      <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <b>28</b> relevant lines.
+      <span class="green"><b>28</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -175,7 +175,7 @@
 
             
 
-            <code class="ruby">  attr_reader :message</code>
+            <code class="ruby">  attr_reader :braille_message</code>
           </li>
         </div>
       
@@ -202,13 +202,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="9" data-linenumber="5">
+            <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">    @message = message</code>
+            <code class="ruby">    @braille_message = message</code>
           </li>
         </div>
       
@@ -257,8 +257,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="10">
+            <span class="hits">3</span>
             
 
             
@@ -576,8 +576,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="39">
+            <span class="hits">3</span>
             
 
             
@@ -587,8 +587,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="40">
-            <span class="hits">41</span>
+          <li class="covered" data-hits="55" data-linenumber="40">
+            <span class="hits">55</span>
             
 
             
@@ -609,19 +609,19 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="42">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">  @message.split.each do |row_message|</code>
+            <code class="ruby">  @braille_message.split.each do |row_message|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="43">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="15" data-linenumber="43">
+            <span class="hits">15</span>
             
 
             
@@ -631,8 +631,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="44">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="15" data-linenumber="44">
+            <span class="hits">15</span>
             
 
             
@@ -642,19 +642,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="160" data-linenumber="45">
-            <span class="hits">160</span>
-            
-
-            
-
-            <code class="ruby">      if message_order[i].count &lt; 3</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="120" data-linenumber="46">
-            <span class="hits">120</span>
+          <li class="covered" data-hits="324" data-linenumber="45">
+            <span class="hits">324</span>
             
 
             
@@ -664,8 +653,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="120" data-linenumber="47">
-            <span class="hits">120</span>
+          <li class="covered" data-hits="324" data-linenumber="46">
+            <span class="hits">324</span>
             
 
             
@@ -675,40 +664,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
-            
-
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="49">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="50">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="47">
             
             
 
@@ -719,18 +675,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="52">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    require &#39;pry&#39;; binding.pry</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="never" data-hits="" data-linenumber="48">
             
             
 
@@ -741,7 +686,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="54">
+          <li class="never" data-hits="" data-linenumber="49">
             
             
 
@@ -752,40 +697,29 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="50">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">  message_order.each do |key, letter_array|</code>
+            
+
+            <code class="ruby">  message_order_actual = Hash.new{ |k, v| k[v] = [] }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="56">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="51">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">    english_message &lt;&lt; braille_alhpabet[letter_array]</code>
+            
+
+            <code class="ruby">  storage = []</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="57">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="52">
             
             
 
@@ -796,24 +730,90 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="59">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="53">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">  require &#39;pry&#39;; binding.pry</code>
+            
+
+            <code class="ruby">  message_order.each do |key, array|</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
+          <li class="covered" data-hits="52" data-linenumber="54">
+            <span class="hits">52</span>
             
+
+            
+
+            <code class="ruby">    i = key</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="52" data-linenumber="55">
+            <span class="hits">52</span>
             
 
             
 
-            <code class="ruby">  english_message.join</code>
+            <code class="ruby">    if array.count &gt; 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="40" data-linenumber="56">
+            <span class="hits">40</span>
+            
+
+            
+
+            <code class="ruby">      storage = message_order[key].pop(array.count - 3)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="40" data-linenumber="57">
+            <span class="hits">40</span>
+            
+
+            
+
+            <code class="ruby">      message_order_actual[i] = array</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="40" data-linenumber="58">
+            <span class="hits">40</span>
+            
+
+            
+
+            <code class="ruby">      while storage.count &gt; 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="56" data-linenumber="59">
+            <span class="hits">56</span>
+            
+
+            
+
+            <code class="ruby">        i += 40</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="56" data-linenumber="60">
+            <span class="hits">56</span>
+            
+
+            
+
+            <code class="ruby">        message_order_actual[i] = storage.shift(3)</code>
           </li>
         </div>
       
@@ -824,12 +824,155 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="63">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">      message_order_actual[key] = array </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="111" data-linenumber="67">
+            <span class="hits">111</span>
+            
+
+            
+
+            <code class="ruby">  message_order_actual = message_order_actual.sort_by{|k| k}.to_h</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="69">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">  message_order_actual.each do |key, letter_array|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="108" data-linenumber="70">
+            <span class="hits">108</span>
+            
+
+            
+
+            <code class="ruby">    english_message &lt;&lt; braille_alhpabet[letter_array]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="71">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="72">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="73">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">  english_message.join</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="74">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="75">
             
             
 
@@ -888,7 +1031,7 @@
 
             
 
-            <code class="ruby">  attr_reader :braille_message</code>
+            <code class="ruby">  attr_reader :message</code>
           </li>
         </div>
       
@@ -921,7 +1064,7 @@
 
             
 
-            <code class="ruby">    @braille_message = message</code>
+            <code class="ruby">    @message = message</code>
           </li>
         </div>
       
@@ -1284,7 +1427,7 @@
 
             
 
-            <code class="ruby">    english_message = []</code>
+            <code class="ruby">    braille_message = []</code>
           </li>
         </div>
       
@@ -1306,7 +1449,7 @@
 
             
 
-            <code class="ruby">    @braille_message.chars.each do |letter|</code>
+            <code class="ruby">    @message.chars.each do |letter|</code>
           </li>
         </div>
       
@@ -1804,7 +1947,7 @@
     <h3>lib/night_reader_class.rb</h3>
     <h4>
       <span class="red">
-  36.84%
+  35.0%
 </span>
 
       lines covered
@@ -1813,9 +1956,9 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
+      <b>20</b> relevant lines.
       <span class="green"><b>7</b> lines covered</span> and
-      <span class="red"><b>12</b> lines missed.</span>
+      <span class="red"><b>13</b> lines missed.</span>
     </div>
 
     
@@ -2123,13 +2266,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="missed" data-hits="0" data-linenumber="28">
             
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    @new_file_characters = @outgoing_text.length</code>
           </li>
         </div>
       
@@ -2140,12 +2283,23 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
             <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
+          <li class="covered" data-hits="1" data-linenumber="31">
             <span class="hits">1</span>
             
 
@@ -2156,7 +2310,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="31">
+          <li class="missed" data-hits="0" data-linenumber="32">
             
             
 
@@ -2167,7 +2321,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="32">
+          <li class="missed" data-hits="0" data-linenumber="33">
             
             
 
@@ -2178,7 +2332,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -2189,7 +2343,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="34">
+          <li class="missed" data-hits="0" data-linenumber="35">
             
             
 
@@ -2200,7 +2354,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
@@ -2211,7 +2365,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 

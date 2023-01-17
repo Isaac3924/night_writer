@@ -25,6 +25,7 @@ class NightReaderClass
   def change_text
     translated_text = BrailleToEnglish.new(@incoming_text)
     @outgoing_text = translated_text.translate
+    @new_file_characters = @outgoing_text.length
   end
     
   def make_file(file_name2)

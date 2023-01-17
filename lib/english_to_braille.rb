@@ -63,20 +63,20 @@ class EnglishToBraille
   end
 
   def adv_format(braille_format)
-    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
     storage = []
+    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
 
-    braille_format.each do |line, row_array|
-      i = line
-      if row_array.count > 40
-        storage = braille_format[line].pop(row_array.count - 40)
-        braille_format_actual[i] = row_array
+    braille_format.each do |key, value|
+      i = key
+      if value.count > 40
+        storage = braille_format[key].pop(value.count - 40)
+        braille_format_actual[i] = value
         while storage.count > 0
           i += 3
           braille_format_actual[i] = storage.shift(40)
         end
       else
-        braille_format_actual[i] = row_array
+        braille_format_actual[i] = value
       end
     end
 

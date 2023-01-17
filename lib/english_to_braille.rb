@@ -32,7 +32,8 @@ class EnglishToBraille
                          "x" => ["00", "..", "00"],
                          "y" => ["00", ".0", "00"],
                          "z" => ["0.", ".0", "00"],
-                         " " => ["..", "..", ".."]
+                         " " => ["..", "..", ".."],
+                         "N/A" => ["XX", "XX", "XX"]
                         }
 
     braille_message = []
@@ -40,7 +41,7 @@ class EnglishToBraille
     @message.chars.each do |letter|
       match = braille_alhpabet.keys.find {|key| key == letter}
       if match == nil
-        braille_message << letter
+        braille_message << braille_alhpabet["N/A"]
       else
         braille_message << braille_alhpabet[match]
       end

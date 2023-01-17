@@ -1,4 +1,8 @@
+require_relative "./analytics"
+
 class BrailleToEnglish
+  include Analytics
+
   attr_reader :braille_message,
               :braille_alhpabet
   
@@ -49,34 +53,13 @@ class BrailleToEnglish
     message_order
   end
 
-  def adv_format(message_order)
-    storage = []
-    message_order_actual = Hash.new{ |k, v| k[v] = [] }
-    
-    message_order.each do |key, value|
-      i = key
-      if value.count > 3
-        storage = message_order[key].pop(value.count - 3)
-        message_order_actual[i] = value
-        while storage.count > 0
-          i += 40
-          message_order_actual[i] = storage.shift(3)
-        end
-      else
-        message_order_actual[key] = value 
-      end
-    end
-
-    message_order_actual
-  end
-
   def translate
   
     english_message = []
 
     message_order = split_braille
 
-    message_order_actual = adv_format(message_order)
+    message_order_actual = adv_format(message_order, 3, 40)
 
     message_order_actual = message_order_actual.sort_by{|k| k}.to_h
 

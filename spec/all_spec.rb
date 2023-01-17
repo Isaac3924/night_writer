@@ -91,6 +91,9 @@ RSpec.describe EnglishToBraille do
 
         expect(nil_check.message).to be_a(String)
         expect(nil_check.message).to eq("!")
+
+        expect(translator.braille_alhpabet).to be_a(Hash)
+        expect(nil_check.braille_alhpabet).to be_a(Hash)
       end
     end
 
@@ -206,6 +209,10 @@ RSpec.describe BrailleToEnglish do
 
         expect(translator_long.braille_message).to be_a(String)
         expect(translator_long.braille_message).to eq("0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.\n00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0.\n....0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.\n0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.0.0.00..0.0.0.0.0....00.\n.0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0000..0..00.00.0..0..00.0\n0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.0.0.........0.0.0....00.\n0.0.00..0.0.0.0.0....00.0.0.00..\n000..0..00.00.0..0..00.0000..0..\n0.0.........0.0.0....00.0.0.....\n")
+
+        expect(translator.braille_alhpabet).to be_a(Hash)
+        expect(translator_single.braille_alhpabet).to be_a(Hash)
+        expect(translator_long.braille_alhpabet).to be_a(Hash)
       end
     end
 

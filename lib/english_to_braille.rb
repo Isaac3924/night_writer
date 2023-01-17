@@ -1,4 +1,8 @@
+require_relative "./analytics"
+
 class EnglishToBraille
+  include Analytics
+
   attr_reader :message,
               :braille_alhpabet
 
@@ -61,27 +65,6 @@ class EnglishToBraille
 
     braille_format
   end
-
-  def adv_format(braille_format)
-    storage = []
-    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
-
-    braille_format.each do |key, value|
-      i = key
-      if value.count > 40
-        storage = braille_format[key].pop(value.count - 40)
-        braille_format_actual[i] = value
-        while storage.count > 0
-          i += 3
-          braille_format_actual[i] = storage.shift(40)
-        end
-      else
-        braille_format_actual[i] = value
-      end
-    end
-
-    braille_format_actual
-  end
     
   def translate
     final_message_array = []
@@ -90,7 +73,7 @@ class EnglishToBraille
 
     braille_format = format(braille_message)
 
-    braille_format_actual = adv_format(braille_format)
+    braille_format_actual = adv_format(braille_format, 40, 3)
 
     braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
 

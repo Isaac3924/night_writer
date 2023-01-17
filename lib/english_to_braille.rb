@@ -1,12 +1,10 @@
 class EnglishToBraille
-  attr_reader :message
+  attr_reader :message,
+              :braille_alhpabet
 
   def initialize(message)
     @message = message
-  end
-
-  def translate
-    braille_alhpabet = { "a" => ["0.", "..", ".."],
+    @braille_alhpabet = { "a" => ["0.", "..", ".."],
                          "b" => ["0.", "0.", ".."],
                          "c" => ["00", "..", ".."],
                          "d" => ["00", ".0", ".."],
@@ -35,28 +33,30 @@ class EnglishToBraille
                          " " => ["..", "..", ".."],
                          "N/A" => ["XX", "XX", "XX"]
                         }
+  end
+
+  def translate
 
     braille_message = []
+    braille_format = Hash.new{ |k, v| k[v] = [] }
+    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
+    storage = []
+    final_message_array = []
 
     @message.chars.each do |letter|
-      match = braille_alhpabet.keys.find {|key| key == letter}
+      match = @braille_alhpabet.keys.find {|key| key == letter}
       if match == nil
-        braille_message << braille_alhpabet["N/A"]
+        braille_message << @braille_alhpabet["N/A"]
       else
-        braille_message << braille_alhpabet[match]
+        braille_message << @braille_alhpabet[match]
       end
     end
-
-    braille_format = Hash.new{ |k, v| k[v] = [] }
 
     braille_message.each do |braille_letter|
       braille_format[1] << braille_letter[0]
       braille_format[2] << braille_letter[1]
       braille_format[3] << braille_letter[2]
     end
-
-    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
-    storage = []
 
     braille_format.each do |line, row_array|
       i = line
@@ -73,8 +73,6 @@ class EnglishToBraille
     end
 
     braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
-
-    final_message_array = []
 
     braille_format_actual.each do |line, row_array|
       final_message_array << "#{row_array.join}\n"

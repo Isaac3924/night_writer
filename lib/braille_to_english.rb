@@ -1,13 +1,10 @@
 class BrailleToEnglish
-  attr_reader :braille_message
+  attr_reader :braille_message,
+              :braille_alhpabet
   
   def initialize(message)
     @braille_message = message
-  end
-  
-  def translate
-    
-    braille_alhpabet = { ["0.", "..", ".."] => "a",
+    @braille_alhpabet = { ["0.", "..", ".."] => "a",
                          ["0.", "..", ".."] => "b",
                          ["00", "..", ".."] => "c",
                          ["00", ".0", ".."] => "d",
@@ -34,10 +31,15 @@ class BrailleToEnglish
                          ["00", ".0", "00"] => "y",
                          ["0.", ".0", "00"] => "z",
                          ["..", "..", ".."] => " " 
-  }
+                        }
+  end
+  
+  def translate
   
   english_message = []
   message_order = Hash.new{ |k, v| k[v] = [] }
+  message_order_actual = Hash.new{ |k, v| k[v] = [] }
+  storage = []
 
   @braille_message.split.each do |row_message|
     i = 0
@@ -46,9 +48,6 @@ class BrailleToEnglish
         i += 1
     end
   end
-
-  message_order_actual = Hash.new{ |k, v| k[v] = [] }
-  storage = []
 
   message_order.each do |key, array|
     i = key
@@ -67,7 +66,7 @@ class BrailleToEnglish
   message_order_actual = message_order_actual.sort_by{|k| k}.to_h
 
   message_order_actual.each do |key, letter_array|
-    english_message << braille_alhpabet[letter_array]
+    english_message << @braille_alhpabet[letter_array]
   end
 
   english_message.join

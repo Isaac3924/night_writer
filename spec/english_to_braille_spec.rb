@@ -18,6 +18,9 @@ RSpec.describe EnglishToBraille do
 
         expect(nil_check.message).to be_a(String)
         expect(nil_check.message).to eq("!")
+
+        expect(translator.braille_alhpabet).to be_a(Hash)
+        expect(nil_check.braille_alhpabet).to be_a(Hash)
       end
     end
 

@@ -35,13 +35,8 @@ class EnglishToBraille
                         }
   end
 
-  def translate
-
+  def match
     braille_message = []
-    braille_format = Hash.new{ |k, v| k[v] = [] }
-    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
-    storage = []
-    final_message_array = []
 
     @message.chars.each do |letter|
       match = @braille_alhpabet.keys.find {|key| key == letter}
@@ -52,11 +47,24 @@ class EnglishToBraille
       end
     end
 
+    braille_message
+  end
+
+  def format(braille_message)
+    braille_format = Hash.new{ |k, v| k[v] = [] }
+
     braille_message.each do |braille_letter|
       braille_format[1] << braille_letter[0]
       braille_format[2] << braille_letter[1]
       braille_format[3] << braille_letter[2]
     end
+
+    braille_format
+  end
+
+  def adv_format(braille_format)
+    braille_format_actual = Hash.new{ |k, v| k[v] = [] }
+    storage = []
 
     braille_format.each do |line, row_array|
       i = line
@@ -71,6 +79,18 @@ class EnglishToBraille
         braille_format_actual[i] = row_array
       end
     end
+
+    braille_format_actual
+  end
+    
+  def translate
+    final_message_array = []
+
+    braille_message = match
+
+    braille_format = format(braille_message)
+
+    braille_format_actual = adv_format(braille_format)
 
     braille_format_actual = braille_format_actual.sort_by{|k| k}.to_h
 

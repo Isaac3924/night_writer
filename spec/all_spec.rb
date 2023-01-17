@@ -237,6 +237,13 @@ RSpec.describe BrailleToEnglish do
       end
     end
 
+    describe '#split_braille' do
+      it 'can take a braille message and seperate it into a Hash' do
+        expect(translator.split_braille[0]).to eq(["0.", "00", ".."])
+        expect(translator.split_braille[7]).to eq(["0.", ".0", "0."])
+      end
+    end
+
     describe '#translate' do
       it 'can change a single braille letter' do
         expect(translator_single.translate).to eq("z")
